@@ -20,10 +20,11 @@ class Backpack
 
         $this->contenidosBackpack[$objeto] = (int) $cantidad;
 
+        $objetosMochilaEnString = [];
         foreach ($this->contenidosBackpack as $clave => $valor) {
-            return $clave . ' x' . $valor;
+            $objetosMochilaEnString[] = $clave . ' x' . $valor;
         }
 
-        return "";
+        return implode(" - ", $objetosMochilaEnString);
     }
 }
