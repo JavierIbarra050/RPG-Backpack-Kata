@@ -30,4 +30,16 @@ class BackpackTest extends TestCase
 
         $this->assertEquals("espada x1", $contenidoBackpack);
     }
+
+    /**
+     * @test
+     */
+    public function givenEquipAnotherOneObjectReturnsBackpackContent()
+    {
+        $backpack = new Backpack();
+
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción");
+
+        $this->assertEquals("poción x1", $contenidoBackpack);
+    }
 }
