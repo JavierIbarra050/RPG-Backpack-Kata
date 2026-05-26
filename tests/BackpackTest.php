@@ -135,4 +135,16 @@ class BackpackTest extends TestCase
 
         $this->assertEquals("0", $contenidoBackpack);
     }
+
+    /**
+     * @test
+     */
+    public function givenEstadoReturnsStringSolicitado()
+    {
+        $backpack = new Backpack();
+
+        $contenidoBackpack = $backpack->gestionarBackpack("estado");
+
+        $this->assertEquals("Ocupacion: 0/10", $contenidoBackpack);
+    }
 }
