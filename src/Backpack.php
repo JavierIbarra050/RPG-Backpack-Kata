@@ -6,6 +6,6 @@ class Backpack
 {
     public function gestionarBackpack(string $accion): string
     {
-
+        return "";
     }
 }
