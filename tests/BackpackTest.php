@@ -69,4 +69,17 @@ class BackpackTest extends TestCase
 
         $this->assertEquals("No tienes ese objeto en la mochila", $contenidoBackpack);
     }
+
+    /**
+     * @test
+     */
+    public function givenDesequiparOneItemOFEquipedObjectWithMoreThanOneItemReturnsItemsWithAmount()
+    {
+        $backpack = new Backpack();
+
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción 3");
+        $contenidoBackpack = $backpack->gestionarBackpack("desequipar poción 1");
+
+        $this->assertEquals("poción 2", $contenidoBackpack);
+    }
 }
