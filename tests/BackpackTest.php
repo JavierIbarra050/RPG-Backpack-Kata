@@ -190,4 +190,18 @@ class BackpackTest extends TestCase
 
         $this->assertEquals("Ocupacion: 1/12", $contenidoBackpack);
     }
+
+    /**
+     * @test
+     */
+    public function givenEstadoWithDesequiparSacoReturnsCorrectOcupation()
+    {
+        $backpack = new Backpack();
+
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar saco 2");
+        $contenidoBackpack = $backpack->gestionarBackpack("desequipar saco");
+        $contenidoBackpack = $backpack->gestionarBackpack("estado");
+
+        $this->assertEquals("Ocupacion: 1/12", $contenidoBackpack);
+    }
 }
