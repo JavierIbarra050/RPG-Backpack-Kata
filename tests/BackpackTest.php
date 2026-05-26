@@ -186,7 +186,7 @@ class BackpackTest extends TestCase
     {
         $backpack = new Backpack();
 
-        $contenidoBackpack = $backpack->gestionarBackpack("equipar espada 10");
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar espada 11");
 
         $this->assertEquals("Mochila llena: no hay espacio suficiente", $contenidoBackpack);
     }

@@ -7,79 +7,8 @@ class Backpack
     private array $contenidosBackpack = [];
     private int $capacidad = 0;
     private int $capacidadMaxima = 10;
-    public function gestionarBackpack(string $accion): string
+    private function mochilaAString(): string
     {
-        if(!$accion) return "";
-
-        $accion = explode(" ", $accion);
-
-        if($accion[0] === "limpiar") { $this->contenidosBackpack = []; return ""; }
-
-        if($accion[0] === "estado") { return "Ocupacion: " . $this->capacidad . "/" . $this->capacidadMaxima; }
-
-        $verbo = $accion[0];
-        $objeto = $accion[1];
-        $cantidad = 1;
-
-        if(count($accion) === 3){
-            $cantidad = $accion[2];
-        }
-
-        if(!isset($this->contenidosBackpack[$objeto]))
-        {
-            if($verbo === "desequipar"){ return "No tienes ese objeto en la mochila"; }
-
-            $this->contenidosBackpack[$objeto] = (int) $cantidad;
-
-            if ($objeto === "espada" || $objeto === "arco" || $objeto === "hacha") { $this->capacidad += 2 * $cantidad; }
-
-            elseif ($objeto === "bolsa" || $objeto === "saco")
-            {
-                $this->capacidad += 1 * $cantidad;
-                $this->capacidadMaxima += 2 * $cantidad;
-            }
-
-            else { $this->capacidad += 1 * $cantidad; }
-
-            if($this->capacidad > $this->capacidadMaxima) return "Mochila llena: no hay espacio suficiente";
-        }
-        else
-        {
-            if ($verbo === "desequipar")
-            {
-                if ($this->contenidosBackpack[$objeto] < $cantidad) { return "No tienes suficiente cantidad de ese objeto"; }
-
-                elseif ($this->contenidosBackpack[$objeto] === $cantidad) { unset($this->contenidosBackpack[$objeto]); }
-
-                else { $this->contenidosBackpack[$objeto] -= (int) $cantidad; }
-
-                if ($objeto === "espada" || $objeto === "arco" || $objeto === "hacha") { $this->capacidad -= 2 * $cantidad; }
-
-                elseif ($objeto === "bolsa" || $objeto === "saco")
-                {
-                    $this->capacidad -= 1 * $cantidad;
-                    $this->capacidadMaxima -= 2 * $cantidad;
-                }
-
-                else { $this->capacidad -= 1 * $cantidad; }
-            }
-            elseif ($verbo === "equipar") {
-                $this->contenidosBackpack[$objeto] += (int) $cantidad;
-
-                if ($objeto === "espada" || $objeto === "arco" || $objeto === "hacha") { $this->capacidad += 2 * $cantidad; }
-
-                elseif ($objeto === "bolsa" || $objeto === "saco")
-                {
-                    $this->capacidad += 1 * $cantidad;
-                    $this->capacidadMaxima += 2 * $cantidad;
-                }
-
-                else { $this->capacidad += 1 * $cantidad; }
-
-                if($this->capacidad > $this->capacidadMaxima) return "Mochila llena: no hay espacio suficiente";
-            }
-        }
-
         $objetosMochilaEnString = [];
         foreach ($this->contenidosBackpack as $clave => $valor)
         {
@@ -87,5 +16,58 @@ class Backpack
         }
 
         return implode(" - ", $objetosMochilaEnString);
+    }
+
+    public function gestionarBackpack(string $accion): string
+    {
+        if(!$accion) return "";
+
+        $accion = explode(" ", $accion);
+
+        if(strtolower($accion[0]) === "limpiar") { $this->contenidosBackpack = []; return ""; }
+        if(strtolower($accion[0]) === "estado") { return "Ocupacion: " . $this->capacidad . "/" . $this->capacidadMaxima; }
+
+        $verbo = strtolower($accion[0]);
+        $objeto = strtolower($accion[1]);
+
+        $cantidad = 1;
+        if(count($accion) === 3){
+            $cantidad = $accion[2];
+        }
+
+        $peso = 1;
+        $mejoraCapacidad = 0;
+
+        if ($objeto === "espada" || $objeto === "arco" || $objeto === "hacha") { $peso = 2; }
+        elseif ($objeto === "saco" || $objeto === "bolsa") { $mejoraCapacidad = 2; }
+
+        $peso *= $cantidad;
+        $mejoraCapacidad *= $cantidad;
+
+        if($verbo === "desequipar" && !isset($this->contenidosBackpack[$objeto])) { return "No tienes ese objeto en la mochila"; }
+
+        if ($verbo === "desequipar")
+        {
+            if ($this->contenidosBackpack[$objeto] < $cantidad) { return "No tienes suficiente cantidad de ese objeto"; }
+
+            elseif ($this->contenidosBackpack[$objeto] === $cantidad) { unset($this->contenidosBackpack[$objeto]); }
+
+            else { $this->contenidosBackpack[$objeto] -= (int) $cantidad; }
+
+            $this->capacidad -= $peso;
+            $this->capacidadMaxima -= $mejoraCapacidad;
+
+            return $this->mochilaAString();
+        }
+
+        if(!isset($this->contenidosBackpack[$objeto])) { $this->contenidosBackpack[$objeto] = (int) $cantidad; }
+        else { $this->contenidosBackpack[$objeto] += (int) $cantidad; }
+
+        $this->capacidad += $peso;
+        $this->capacidadMaxima += $mejoraCapacidad;
+
+        if($this->capacidad > $this->capacidadMaxima) { return "Mochila llena: no hay espacio suficiente"; }
+
+        return $this->mochilaAString();
     }
 }
