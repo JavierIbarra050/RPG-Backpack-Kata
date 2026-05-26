@@ -30,6 +30,7 @@ class Backpack
             if($verbo === "desequipar"){ return "No tienes ese objeto en la mochila"; }
 
             $this->contenidosBackpack[$objeto] = (int) $cantidad;
+            $this->capacidad += 1;
         }
         else
         {
@@ -43,6 +44,7 @@ class Backpack
             }
             elseif ($verbo === "equipar") {
                 $this->contenidosBackpack[$objeto] += (int) $cantidad;
+                $this->capacidad += 1;
             }
         }
 
