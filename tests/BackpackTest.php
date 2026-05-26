@@ -61,18 +61,6 @@ class BackpackTest extends TestCase
     /**
      * @test
      */
-    public function givenDesequiparReturnsDesequipar()
-    {
-        $backpack = new Backpack();
-
-        $contenidoBackpack = $backpack->gestionarBackpack("desequipar poción");
-
-        $this->assertEquals("desequipar", $contenidoBackpack);
-    }
-
-    /**
-     * @test
-     */
     public function givenDesequiparObjetoNoEquipadoDevuelveError()
     {
         $backpack = new Backpack();
