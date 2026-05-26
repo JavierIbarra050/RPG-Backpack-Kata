@@ -162,4 +162,18 @@ class BackpackTest extends TestCase
 
         $this->assertEquals("Ocupacion: 4/10", $contenidoBackpack);
     }
+
+    /**
+     * @test
+     */
+    public function givenEstadoWithAnDesequiparObjectReturnsCorrectOcupation()
+    {
+        $backpack = new Backpack();
+
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar espada");
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción");
+        $contenidoBackpack = $backpack->gestionarBackpack("desequipar espada");
+
+        $this->assertEquals("Ocupacion: 1/10", $contenidoBackpack);
+    }
 }
