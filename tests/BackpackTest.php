@@ -90,9 +90,23 @@ class BackpackTest extends TestCase
     {
         $backpack = new Backpack();
 
-        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción 1");
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción");
         $contenidoBackpack = $backpack->gestionarBackpack("desequipar poción 2");
 
         $this->assertEquals("No tienes suficiente cantidad de ese objeto", $contenidoBackpack);
+    }
+
+    /**
+     * @test
+     */
+    public function givenDesequiparSameAmountOfObjectEquipedGetsThatItemErrasedFromBackpack()
+    {
+        $backpack = new Backpack();
+
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar espada ");
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción ");
+        $contenidoBackpack = $backpack->gestionarBackpack("desequipar poción");
+
+        $this->assertEquals("espada x1", $contenidoBackpack);
     }
 }
