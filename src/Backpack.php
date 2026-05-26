@@ -40,6 +40,8 @@ class Backpack
             }
 
             else { $this->capacidad += 1 * $cantidad; }
+
+            if($this->capacidad > $this->capacidadMaxima) return "Mochila llena: no hay espacio suficiente";
         }
         else
         {
@@ -73,6 +75,8 @@ class Backpack
                 }
 
                 else { $this->capacidad += 1 * $cantidad; }
+
+                if($this->capacidad > $this->capacidadMaxima) return "Mochila llena: no hay espacio suficiente";
             }
         }
 

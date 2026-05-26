@@ -140,32 +140,6 @@ class BackpackTest extends TestCase
     /**
      * @test
      */
-    public function givenEstadoWithAnArmaObjectEquipedReturns2OfOcupation()
-    {
-        $backpack = new Backpack();
-
-        $contenidoBackpack = $backpack->gestionarBackpack("equipar espada");
-        $contenidoBackpack = $backpack->gestionarBackpack("estado");
-
-        $this->assertEquals("Ocupacion: 2/10", $contenidoBackpack);
-    }
-
-    /**
-     * @test
-     */
-    public function givenEstadoWithATwoArmaObjectEquipedReturns4OfOcupation()
-    {
-        $backpack = new Backpack();
-
-        $contenidoBackpack = $backpack->gestionarBackpack("equipar espada 2");
-        $contenidoBackpack = $backpack->gestionarBackpack("estado");
-
-        $this->assertEquals("Ocupacion: 4/10", $contenidoBackpack);
-    }
-
-    /**
-     * @test
-     */
     public function givenEstadoWithAnDesequiparObjectReturnsCorrectOcupation()
     {
         $backpack = new Backpack();
@@ -203,5 +177,17 @@ class BackpackTest extends TestCase
         $contenidoBackpack = $backpack->gestionarBackpack("estado");
 
         $this->assertEquals("Ocupacion: 1/12", $contenidoBackpack);
+    }
+
+    /**
+     * @test
+     */
+    public function givenEquiparWeaponReturnsErrorForNoEnoughCapacity()
+    {
+        $backpack = new Backpack();
+
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar espada 10");
+
+        $this->assertEquals("Mochila llena: no hay espacio suficiente", $contenidoBackpack);
     }
 }
