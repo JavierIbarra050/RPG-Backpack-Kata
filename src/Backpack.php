@@ -41,7 +41,9 @@ class Backpack
 
                 else { $this->contenidosBackpack[$objeto] -= (int) $cantidad; }
             }
-            elseif ($verbo === "equipar") { $this->contenidosBackpack[$objeto] += (int) $cantidad; }
+            elseif ($verbo === "equipar") {
+                $this->contenidosBackpack[$objeto] += (int) $cantidad;
+            }
         }
 
         $objetosMochilaEnString = [];

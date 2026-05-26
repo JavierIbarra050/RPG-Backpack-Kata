@@ -127,12 +127,13 @@ class BackpackTest extends TestCase
     /**
      * @test
      */
-    public function givenEstadoReturnsStringSolicitado()
+    public function givenEstadoWithAnMiscelaneousObjectEquipedReturns1OfOcupation()
     {
         $backpack = new Backpack();
 
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción");
         $contenidoBackpack = $backpack->gestionarBackpack("estado");
 
-        $this->assertEquals("Ocupacion: 0/10", $contenidoBackpack);
+        $this->assertEquals("Ocupacion: 1/10", $contenidoBackpack);
     }
 }
