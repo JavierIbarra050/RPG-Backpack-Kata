@@ -44,4 +44,18 @@ class BackpackTest extends TestCase
 
         $this->assertEquals("poción x4 - espada x2", $contenidoBackpack);
     }
+
+    /**
+     * @test
+     */
+    public function givenEquipTwoTimesSameObjectReturnsThatObjectWithThatAmount()
+    {
+        $backpack = new Backpack();
+
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción 4");
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción 2");
+
+
+        $this->assertEquals("poción x6", $contenidoBackpack);
+    }
 }
