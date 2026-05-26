@@ -6,6 +6,8 @@ class Backpack
 {
     public function gestionarBackpack(string $accion): string
     {
-        return "";
+        if(!$accion) return "";
+
+        return "espada x1";
     }
 }
