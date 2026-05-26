@@ -31,7 +31,9 @@ class Backpack
             {
                 if ($this->contenidosBackpack[$objeto] < $cantidad) { return "No tienes suficiente cantidad de ese objeto"; }
 
-                $this->contenidosBackpack[$objeto] -= (int) $cantidad;
+                elseif ($this->contenidosBackpack[$objeto] === $cantidad) { unset($this->contenidosBackpack[$objeto]); }
+
+                else { $this->contenidosBackpack[$objeto] -= (int) $cantidad; }
             }
             elseif ($verbo === "equipar") { $this->contenidosBackpack[$objeto] += (int) $cantidad; }
         }

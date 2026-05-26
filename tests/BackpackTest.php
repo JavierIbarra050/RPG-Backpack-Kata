@@ -103,8 +103,8 @@ class BackpackTest extends TestCase
     {
         $backpack = new Backpack();
 
-        $contenidoBackpack = $backpack->gestionarBackpack("equipar espada ");
-        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción ");
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar espada");
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción");
         $contenidoBackpack = $backpack->gestionarBackpack("desequipar poción");
 
         $this->assertEquals("espada x1", $contenidoBackpack);
