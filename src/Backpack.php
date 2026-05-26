@@ -11,6 +11,12 @@ class Backpack
 
         $accion = explode(" ", $accion);
 
+        if($accion[0] === "limpiar")
+        {
+            $this->contenidosBackpack = [];
+            return "";
+        }
+
         $verbo = $accion[0];
         $objeto = $accion[1];
         $cantidad = 1;
