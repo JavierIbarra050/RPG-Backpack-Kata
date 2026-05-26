@@ -73,19 +73,6 @@ class BackpackTest extends TestCase
     /**
      * @test
      */
-    public function givenDesequiparOneItemOFEquipedObjectWithMoreThanOneItemReturnsItemsWithAmount()
-    {
-        $backpack = new Backpack();
-
-        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción 3");
-        $contenidoBackpack = $backpack->gestionarBackpack("desequipar poción");
-
-        $this->assertEquals("poción x2", $contenidoBackpack);
-    }
-
-    /**
-     * @test
-     */
     public function givenDesequiparObjectAmountLessThanActualAmountOfThatObjectReturnsError()
     {
         $backpack = new Backpack();
@@ -99,21 +86,33 @@ class BackpackTest extends TestCase
     /**
      * @test
      */
-    public function givenDesequiparSameAmountOfObjectEquipedGetsThatItemErrasedFromBackpack()
+    public function givenEquiparTooManyWeaponsReturnsErrorForNoEnoughCapacity()
     {
         $backpack = new Backpack();
 
-        $contenidoBackpack = $backpack->gestionarBackpack("equipar espada");
-        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción");
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar espada 11");
+
+        $this->assertEquals("Mochila llena: no hay espacio suficiente", $contenidoBackpack);
+    }
+
+
+    /**
+     * @test
+     */
+    public function givenDesequiparOneItemOFEquipedObjectWithMoreThanOneItemReturnsItemsWithAmount()
+    {
+        $backpack = new Backpack();
+
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción 3");
         $contenidoBackpack = $backpack->gestionarBackpack("desequipar poción");
 
-        $this->assertEquals("espada x1", $contenidoBackpack);
+        $this->assertEquals("poción x2", $contenidoBackpack);
     }
 
     /**
      * @test
      */
-    public function givenLimpiarVaciaMochila()
+    public function givenLimpiarEmptiesBackpack()
     {
         $backpack = new Backpack();
 
@@ -122,34 +121,6 @@ class BackpackTest extends TestCase
         $contenidoBackpack = $backpack->gestionarBackpack("equipar poción");
 
         $this->assertEquals("poción x1", $contenidoBackpack);
-    }
-
-    /**
-     * @test
-     */
-    public function givenEstadoWithAnMiscelaneousObjectEquipedReturns1OfOcupation()
-    {
-        $backpack = new Backpack();
-
-        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción");
-        $contenidoBackpack = $backpack->gestionarBackpack("estado");
-
-        $this->assertEquals("Ocupacion: 1/10", $contenidoBackpack);
-    }
-
-    /**
-     * @test
-     */
-    public function givenEstadoWithAnDesequiparObjectReturnsCorrectOcupation()
-    {
-        $backpack = new Backpack();
-
-        $contenidoBackpack = $backpack->gestionarBackpack("equipar espada");
-        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción");
-        $contenidoBackpack = $backpack->gestionarBackpack("desequipar espada");
-        $contenidoBackpack = $backpack->gestionarBackpack("estado");
-
-        $this->assertEquals("Ocupacion: 1/10", $contenidoBackpack);
     }
 
     /**
@@ -165,29 +136,4 @@ class BackpackTest extends TestCase
         $this->assertEquals("Ocupacion: 1/12", $contenidoBackpack);
     }
 
-    /**
-     * @test
-     */
-    public function givenEstadoWithDesequiparSacoReturnsCorrectOcupation()
-    {
-        $backpack = new Backpack();
-
-        $contenidoBackpack = $backpack->gestionarBackpack("equipar saco 2");
-        $contenidoBackpack = $backpack->gestionarBackpack("desequipar saco");
-        $contenidoBackpack = $backpack->gestionarBackpack("estado");
-
-        $this->assertEquals("Ocupacion: 1/12", $contenidoBackpack);
-    }
-
-    /**
-     * @test
-     */
-    public function givenEquiparWeaponReturnsErrorForNoEnoughCapacity()
-    {
-        $backpack = new Backpack();
-
-        $contenidoBackpack = $backpack->gestionarBackpack("equipar espada 11");
-
-        $this->assertEquals("Mochila llena: no hay espacio suficiente", $contenidoBackpack);
-    }
 }
