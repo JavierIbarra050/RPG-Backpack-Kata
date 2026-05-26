@@ -149,4 +149,17 @@ class BackpackTest extends TestCase
 
         $this->assertEquals("Ocupacion: 2/10", $contenidoBackpack);
     }
+
+    /**
+     * @test
+     */
+    public function givenEstadoWithATwoArmaObjectEquipedReturns4OfOcupation()
+    {
+        $backpack = new Backpack();
+
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar espada 2");
+        $contenidoBackpack = $backpack->gestionarBackpack("estado");
+
+        $this->assertEquals("Ocupacion: 4/10", $contenidoBackpack);
+    }
 }
