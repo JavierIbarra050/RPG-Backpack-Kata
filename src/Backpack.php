@@ -42,7 +42,6 @@ class Backpack
             $objetosMochilaEnString[] = $clave . ' x' . $valor;
         }
 
-
         return implode(" - ", $objetosMochilaEnString);
     }
 }
