@@ -82,4 +82,17 @@ class BackpackTest extends TestCase
 
         $this->assertEquals("poción x2", $contenidoBackpack);
     }
+
+    /**
+     * @test
+     */
+    public function givenDesequiparObjectAmountLessThanActualAmountOfThatObjectReturnsError()
+    {
+        $backpack = new Backpack();
+
+        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción 1");
+        $contenidoBackpack = $backpack->gestionarBackpack("desequipar poción 2");
+
+        $this->assertEquals("No tienes suficiente cantidad de ese objeto", $contenidoBackpack);
+    }
 }
