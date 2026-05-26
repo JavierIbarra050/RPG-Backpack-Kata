@@ -61,7 +61,7 @@ class BackpackTest extends TestCase
     /**
      * @test
      */
-    public function givenDesequiparObjetoNoEquipadoDevuelveError()
+    public function givenDesequiparWithoutEquipedObjectReturnsError()
     {
         $backpack = new Backpack();
 
