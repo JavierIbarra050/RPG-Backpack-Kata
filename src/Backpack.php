@@ -19,7 +19,7 @@ class Backpack
             return "";
         }
 
-        if($accion[0] === "estado") { return "0"; }
+        if($accion[0] === "estado") { return "Ocupacion: 0/10"; }
 
         $verbo = $accion[0];
         $objeto = $accion[1];
