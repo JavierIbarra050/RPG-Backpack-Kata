@@ -173,6 +173,7 @@ class BackpackTest extends TestCase
         $contenidoBackpack = $backpack->gestionarBackpack("equipar espada");
         $contenidoBackpack = $backpack->gestionarBackpack("equipar poción");
         $contenidoBackpack = $backpack->gestionarBackpack("desequipar espada");
+        $contenidoBackpack = $backpack->gestionarBackpack("estado");
 
         $this->assertEquals("Ocupacion: 1/10", $contenidoBackpack);
     }
