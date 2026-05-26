@@ -10,6 +10,10 @@ class Backpack
 
         $accion = explode(" ", $accion);
 
+        if(count($accion) === 3){
+            return "poción x2";
+        }
+
         return $accion[1] . "x1";
     }
 }
