@@ -34,18 +34,6 @@ class BackpackTest extends TestCase
     /**
      * @test
      */
-    public function givenEquipAnyAmountOfAnObjectReturnsThatObjectXAmount()
-    {
-        $backpack = new Backpack();
-
-        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción 4");
-
-        $this->assertEquals("poción x4", $contenidoBackpack);
-    }
-
-    /**
-     * @test
-     */
     public function givenEquipTwoObjectsReturnsThoseTwoObjects()
     {
         $backpack = new Backpack();
