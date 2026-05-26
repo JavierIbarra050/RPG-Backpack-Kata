@@ -9,6 +9,7 @@ class Backpack
         if(!$accion) return "";
 
         $accion = explode(" ", $accion);
+
         return $accion[1] . "x1";
     }
 }
