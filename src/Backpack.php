@@ -63,10 +63,10 @@ class Backpack
         if(!isset($this->contenidosBackpack[$objeto])) { $this->contenidosBackpack[$objeto] = (int) $cantidad; }
         else { $this->contenidosBackpack[$objeto] += (int) $cantidad; }
 
+        if($this->capacidad > $this->capacidadMaxima) { return "Mochila llena: no hay espacio suficiente"; }
+
         $this->capacidad += $peso;
         $this->capacidadMaxima += $mejoraCapacidad;
-
-        if($this->capacidad > $this->capacidadMaxima) { return "Mochila llena: no hay espacio suficiente"; }
 
         return $this->mochilaAString();
     }
