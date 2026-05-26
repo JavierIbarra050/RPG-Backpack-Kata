@@ -8,6 +8,7 @@ class Backpack
     {
         if(!$accion) return "";
 
-        return "espada x1";
+        $accion = explode(" ", $accion);
+        return $accion[1] . "x1";
     }
 }
