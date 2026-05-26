@@ -46,7 +46,9 @@ class Backpack
             }
             elseif ($verbo === "equipar") {
                 $this->contenidosBackpack[$objeto] += (int) $cantidad;
-                $this->capacidad += 1;
+
+                if ($objeto === "espada" || $objeto === "arco" || $objeto === "hacha") { $this->capacidad += 2; }
+                else { $this->capacidad += 1; }
             }
         }
 
