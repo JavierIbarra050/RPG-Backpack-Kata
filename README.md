@@ -83,17 +83,6 @@ $backpack->execute("desequipar saco");    // "[espada]x2 - [pocion]x2"
 $backpack->execute("estado");             // "Ocupación: 6/10" (Al quitar el saco, la capacidad vuelve a ser 10)
 
 $backpack->execute("limpiar");            // ""
-
-
-# Construir la imagen
-docker build -t rpg-backpack-php .
-
-# Entrar al contenedor (instala vendor/ automáticamente si no existe)
-docker run -it -v "$(pwd)":/app rpg-backpack-php bash
-
-# Ejecutar los tests
-vendor/bin/phpunit
-
 ```
 ----
 
@@ -102,11 +91,11 @@ vendor/bin/phpunit
 
 ```bash
 # Construir la imagen
-docker build -t fizzbuzz-php .
+docker build -t rng-backpack-php .
 
 # Entrar al contenedor
 # Al entrar, si no existe vendor/, se instala automáticamente
-docker run -it -v "$(pwd)":/app fizzbuzz-php bash
+docker run -it -v "$(pwd)":/app rng-backpack-php bash
 
 # Ejecutar los tests dentro del contenedor
 vendor/bin/phpunit
