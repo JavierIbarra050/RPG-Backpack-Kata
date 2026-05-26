@@ -5,6 +5,8 @@ namespace Deg540\CleanCodeKata9;
 class Backpack
 {
     private array $contenidosBackpack = [];
+    private int $capacidad = 0;
+    private int $capacidadMaxima = 10;
     public function gestionarBackpack(string $accion): string
     {
         if(!$accion) return "";
@@ -17,7 +19,7 @@ class Backpack
             return "";
         }
 
-        if($accion[0] === "estado") { return 0; }
+        if($accion[0] === "estado") { return "0"; }
 
         $verbo = $accion[0];
         $objeto = $accion[1];
