@@ -18,7 +18,15 @@ class Backpack
             $cantidad = $accion[2];
         }
 
-        $this->contenidosBackpack[$objeto] = (int) $cantidad;
+        if(!isset($this->contenidosBackpack[$objeto]))
+        {
+            $this->contenidosBackpack[$objeto] = (int) $cantidad;
+        }
+        else
+        {
+            $this->contenidosBackpack[$objeto] += (int) $cantidad;
+        }
+
 
         $objetosMochilaEnString = [];
         foreach ($this->contenidosBackpack as $clave => $valor) {
