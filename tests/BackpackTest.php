@@ -123,4 +123,16 @@ class BackpackTest extends TestCase
 
         $this->assertEquals("poción x1", $contenidoBackpack);
     }
+
+    /**
+     * @test
+     */
+    public function givenEstadoReturns0()
+    {
+        $backpack = new Backpack();
+
+        $contenidoBackpack = $backpack->gestionarBackpack("estado");
+
+        $this->assertEquals("0", $contenidoBackpack);
+    }
 }
