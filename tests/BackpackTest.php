@@ -22,18 +22,6 @@ class BackpackTest extends TestCase
     /**
      * @test
      */
-    public function givenEquipOneObjectReturnsBackpackContent()
-    {
-        $backpack = new Backpack();
-
-        $contenidoBackpack = $backpack->gestionarBackpack("equipar espada");
-
-        $this->assertEquals("espada x1", $contenidoBackpack);
-    }
-
-    /**
-     * @test
-     */
     public function givenEquipAnyOneObjectReturnsBackpackContent()
     {
         $backpack = new Backpack();
@@ -41,18 +29,6 @@ class BackpackTest extends TestCase
         $contenidoBackpack = $backpack->gestionarBackpack("equipar poción");
 
         $this->assertEquals("poción x1", $contenidoBackpack);
-    }
-
-    /**
-     * @test
-     */
-    public function givenEquipTwoObjectReturnsThatObjectX2()
-    {
-        $backpack = new Backpack();
-
-        $contenidoBackpack = $backpack->gestionarBackpack("equipar poción 2");
-
-        $this->assertEquals("poción x2", $contenidoBackpack);
     }
 
     /**
