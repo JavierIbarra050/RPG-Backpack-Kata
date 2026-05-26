@@ -13,13 +13,9 @@ class Backpack
 
         $accion = explode(" ", $accion);
 
-        if($accion[0] === "limpiar")
-        {
-            $this->contenidosBackpack = [];
-            return "";
-        }
+        if($accion[0] === "limpiar") { $this->contenidosBackpack = []; return ""; }
 
-        if($accion[0] === "estado") { return "Ocupacion: 0/10"; }
+        if($accion[0] === "estado") { return "Ocupacion: " . $this->capacidad . "/" . $this->capacidadMaxima; }
 
         $verbo = $accion[0];
         $objeto = $accion[1];
