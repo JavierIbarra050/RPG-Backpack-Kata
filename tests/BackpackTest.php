@@ -34,7 +34,7 @@ class BackpackTest extends TestCase
     /**
      * @test
      */
-    public function givenEquipAnotherOneObjectReturnsBackpackContent()
+    public function givenEquipAnyOneObjectReturnsBackpackContent()
     {
         $backpack = new Backpack();
 
