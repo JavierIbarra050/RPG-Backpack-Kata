@@ -11,34 +11,31 @@ class Backpack
 
         $accion = explode(" ", $accion);
 
-        if($accion[0] == "desequipar")
+        $verbo = $accion[0];
+        $objeto = $accion[1];
+        $cantidad = 1;
+
+        if(count($accion) === 3){
+            $cantidad = $accion[2];
+        }
+
+        if(!isset($this->contenidosBackpack[$objeto]))
         {
-            return "desequipar";
+            if($verbo === "desequipar"){ return "No tienes ese objeto en la mochila"; }
+
+            $this->contenidosBackpack[$objeto] = (int) $cantidad;
         }
         else
         {
-            $objeto = $accion[1];
-            $cantidad = 1;
-
-            if(count($accion) === 3){
-                $cantidad = $accion[2];
-            }
-
-            if(!isset($this->contenidosBackpack[$objeto]))
-            {
-                $this->contenidosBackpack[$objeto] = (int) $cantidad;
-            }
-            else
-            {
-                $this->contenidosBackpack[$objeto] += (int) $cantidad;
-            }
-
-            $objetosMochilaEnString = [];
-            foreach ($this->contenidosBackpack as $clave => $valor)
-            {
-                $objetosMochilaEnString[] = $clave . ' x' . $valor;
-            }
+            $this->contenidosBackpack[$objeto] += (int) $cantidad;
         }
+
+        $objetosMochilaEnString = [];
+        foreach ($this->contenidosBackpack as $clave => $valor)
+        {
+            $objetosMochilaEnString[] = $clave . ' x' . $valor;
+        }
+
 
         return implode(" - ", $objetosMochilaEnString);
     }

@@ -73,13 +73,12 @@ class BackpackTest extends TestCase
     /**
      * @test
      */
-    public function givenDesequiparUnaUnidadDeObjetoEquipadoReturnsObjetoConCantidadActualizada()
+    public function givenDesequiparObjetoNoEquipadoDevuelveError()
     {
         $backpack = new Backpack();
 
-        $contenidoBackpack = $backpack->gestionarBackpack("desequipar poción 3");
         $contenidoBackpack = $backpack->gestionarBackpack("desequipar poción");
 
-        $this->assertEquals("poción x2", $contenidoBackpack);
+        $this->assertEquals("No tienes ese objeto en la mochila", $contenidoBackpack);
     }
 }
